@@ -9,13 +9,19 @@ class Shape extends React.Component {
         this.state = {
             shpae: null
         }
+
+        this.progressBar = null;
     }
 
     render() {
         const style = this.props.containerStyle;
         const className = this.props.containerClassName;
 
-        return (<div className={className} style={style} ref="progressBar"></div>);
+        return (
+            <div className={className} style={style} ref={(el) => {
+                this.progressBar = el;
+            }}></div>
+        );
     }
 
     componentWillReceiveProps(nextProps) {
@@ -44,7 +50,7 @@ class Shape extends React.Component {
 
         // setState function is not used to prevent a new render cycle
         // This handling happens outside of React component's lifecycle
-        const container = ReactDom.findDOMNode(this.refs.progressBar);
+        const container = ReactDom.findDOMNode(this.progressBar);
         this.state.shape = new props.ShapeClass(
             container,
             props.options
