@@ -84,7 +84,7 @@
             var _this = _possibleConstructorReturn(this, (Shape.__proto__ || Object.getPrototypeOf(Shape)).call(this, props));
 
             _this.state = {
-                shpae: null
+                shape: null
             };
 
             _this.progressBar = null;

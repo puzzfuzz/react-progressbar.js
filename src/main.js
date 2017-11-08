@@ -7,8 +7,8 @@ class Shape extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            shpae: null
-        }
+            shape: null
+        };
 
         this.progressBar = null;
     }
