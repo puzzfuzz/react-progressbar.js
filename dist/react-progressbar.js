@@ -86,16 +86,22 @@
             _this.state = {
                 shpae: null
             };
+
+            _this.progressBar = null;
             return _this;
         }
 
         _createClass(Shape, [{
             key: 'render',
             value: function render() {
+                var _this2 = this;
+
                 var style = this.props.containerStyle;
                 var className = this.props.containerClassName;
 
-                return React.createElement('div', { className: className, style: style, ref: 'progressBar' });
+                return React.createElement('div', { className: className, style: style, ref: function ref(el) {
+                        _this2.progressBar = el;
+                    } });
             }
         }, {
             key: 'componentWillReceiveProps',
@@ -128,7 +134,7 @@
 
                 // setState function is not used to prevent a new render cycle
                 // This handling happens outside of React component's lifecycle
-                var container = ReactDom.findDOMNode(this.refs.progressBar);
+                var container = ReactDom.findDOMNode(this.progressBar);
                 this.state.shape = new props.ShapeClass(container, props.options);
 
                 if (props.initialAnimate) {
